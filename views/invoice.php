@@ -7,7 +7,7 @@ ob_start();
         <div class="row align-items-center">
             <div class="col">
                 <h2 class="mb-1">Invoice</h2>
-                <p class="text-muted mb-0">Order #O001</p>
+                <p class="text-muted mb-0">Order #<?= htmlspecialchars($order['fld_order_num']) ?></p>
             </div>
             <div class="col-auto">
                 <button type="button" class="btn btn-primary"><i class="bi bi-printer me-1"></i>Print</button>
@@ -24,21 +24,21 @@ ob_start();
                 <p class="text-muted mb-0">Sales Invoice</p>
             </div>
             <div class="col-md-6 text-md-end">
-                <strong>Invoice No.: </strong>O001<br>
-                <strong>Date: </strong>2026-10-03
+                <strong>Invoice No.: </strong><?= htmlspecialchars($order['fld_order_num']) ?><br>
+                <strong>Date: </strong><?= htmlspecialchars($order['fld_order_date']) ?>
             </div>
         </div>
         <hr>
         <div class="row mb-4">
             <div class="col-md-6">
                 <strong>Customer</strong><br>
-                Alice Johnson<br>
-                012-3456789
+                <?= htmlspecialchars($order['fld_customer_name'] ?? $order['fld_customer_num']) ?><br>
+                <?= htmlspecialchars($order['fld_customer_phone'] ?? '') ?>
             </div>
             <div class="col-md-6 text-md-end">
                 <strong>Staff</strong><br>
-                Jane Smith<br>
-                janesmith@example.com
+                <?= htmlspecialchars($order['fld_staff_name'] ?? $order['fld_staff_num']) ?><br>
+                <?= htmlspecialchars($order['fld_staff_email'] ?? '') ?>
             </div>
         </div>
         <div class="table-responsive">
@@ -53,19 +53,26 @@ ob_start();
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Huawei 5G Mobile WiFi Pro</td>
-                        <td>RM 899.00</td>
-                        <td>1</td>
-                        <td class="text-end">RM 899.00</td>
-                    </tr>
-                    <tr><td colspan="5" class="text-center">No products added to this order</td></tr>
+                    <?php $grandTotal = 0; ?>
+                    <?php if (!empty($details)): ?>
+                        <?php foreach ($details as $index => $detail): ?>
+                            <?php $lineTotal = (float) $detail['fld_product_price'] * (int) $detail['fld_order_detail_quantity']; $grandTotal += $lineTotal; ?>
+                            <tr>
+                                <td><?= $index + 1 ?></td>
+                                <td><?= htmlspecialchars($detail['fld_product_name'] ?? $detail['fld_product_num']) ?></td>
+                                <td>RM <?= number_format((float) ($detail['fld_product_price'] ?? 0), 2) ?></td>
+                                <td><?= htmlspecialchars($detail['fld_order_detail_quantity']) ?></td>
+                                <td class="text-end">RM <?= number_format($lineTotal, 2) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="5" class="text-center">No products added to this order</td></tr>
+                    <?php endif; ?>
                 </tbody>
-                <tfoot><tr><th colspan="4" class="text-end">Grand Total</th><th class="text-end">RM 899.00</th></tr></tfoot>
+                <tfoot><tr><th colspan="4" class="text-end">Grand Total</th><th class="text-end">RM <?= number_format($grandTotal, 2) ?></th></tr></tfoot>
             </table>
         </div>
-        <a href="orderdetails.php" class="btn btn-secondary"><i class="bi bi-arrow-left me-1"></i>Back to Details</a>
+        <a href="<?= BASE_URL ?>orderdetailcontroller/index/<?= htmlspecialchars($order['fld_order_num']) ?>" class="btn btn-secondary"><i class="bi bi-arrow-left me-1"></i>Back to Details</a>
     </div>
 </div>
 
