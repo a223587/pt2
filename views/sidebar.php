@@ -1,6 +1,6 @@
       <div id="mySidebar" class="col-auto bg-dark text-white offcanvas-lg offcanvas-start" tabindex="-1">
         <div class="p-4">
-          <a href="home.php" class="navbar-brand">
+          <a href="<?= BASE_URL ?>" class="navbar-brand">
             <div class="row">
               <h5 class=""><i class="bi bi-wifi me-2"></i>HotspotHub</h5>
             </div>
@@ -10,7 +10,7 @@
 
           <ul class="mynav nav nav-pills flex-column">
             <li class="nav-item mb-3 mt-2">
-              <a href="home.php" class="text-decoration-none text-white">
+              <a href="<?= BASE_URL ?>" class="text-decoration-none text-white">
                 <i class="bi bi-house-fill me-2"></i>
                 Home
               </a>
@@ -22,25 +22,25 @@
               </a>
             </li>
             <li class="nav-item mb-3">
-              <a href="products.php" class="text-decoration-none text-white">
+              <a href="<?= BASE_URL ?>productcontroller" class="text-decoration-none text-white">
                 <i class="bi bi-router-fill me-2"></i>
                 Products
               </a>
             </li>
             <li class="nav-item mb-3">
-              <a href="customers.php" class="text-decoration-none text-white">
+              <a href="<?= BASE_URL ?>customercontroller" class="text-decoration-none text-white">
                 <i class="bi bi-person-vcard-fill me-2"></i>
                 Customers
               </a>
             </li>
             <li class="nav-item mb-3">
-              <a href="staffs.php" class="text-decoration-none text-white">
+              <a href="<?= BASE_URL ?>staffcontroller" class="text-decoration-none text-white">
                 <i class="bi bi-person-badge-fill me-2"></i>
                 Staffs
               </a>
             </li>
             <li class="nav-item mb-3">
-              <a href="orders.php" class="text-decoration-none text-white">
+              <a href="<?= BASE_URL ?>ordercontroller" class="text-decoration-none text-white">
                 <i class="bi bi-cart-fill me-2"></i>
                 Orders
               </a>

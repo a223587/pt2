@@ -54,7 +54,7 @@ ob_start();
             <div class="card-body">
                 <h5><i class="bi bi-router-fill text-primary me-2"></i>Products</h5>
                 <p class="text-muted">Manage portable Wi-Fi hotspot stock, prices and specs.</p>
-                <a href="products.php" class="btn btn-primary btn-sm">Go to Products</a>
+                <a href="<?= BASE_URL ?>productcontroller" class="btn btn-primary btn-sm">Go to Products</a>
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@ ob_start();
             <div class="card-body">
                 <h5><i class="bi bi-person-vcard-fill text-primary me-2"></i>Customers</h5>
                 <p class="text-muted">Keep track of registered customers and their contacts.</p>
-                <a href="customers.php" class="btn btn-primary btn-sm">Go to Customers</a>
+                <a href="<?= BASE_URL ?>customercontroller" class="btn btn-primary btn-sm">Go to Customers</a>
             </div>
         </div>
     </div>
@@ -72,7 +72,7 @@ ob_start();
             <div class="card-body">
                 <h5><i class="bi bi-person-badge-fill text-primary me-2"></i>Staffs</h5>
                 <p class="text-muted">Manage the staff members who handle orders.</p>
-                <a href="staffs.php" class="btn btn-primary btn-sm">Go to Staffs</a>
+                <a href="<?= BASE_URL ?>staffcontroller" class="btn btn-primary btn-sm">Go to Staffs</a>
             </div>
         </div>
     </div>
@@ -81,7 +81,7 @@ ob_start();
             <div class="card-body">
                 <h5><i class="bi bi-cart-fill text-primary me-2"></i>Orders</h5>
                 <p class="text-muted">Create orders, add products and print invoices.</p>
-                <a href="orders.php" class="btn btn-primary btn-sm">Go to Orders</a>
+                <a href="<?= BASE_URL ?>ordercontroller" class="btn btn-primary btn-sm">Go to Orders</a>
             </div>
         </div>
     </div>
